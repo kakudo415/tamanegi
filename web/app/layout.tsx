@@ -3,9 +3,12 @@ import { Metadata } from 'next'
 import './globals.css'
 import { css } from '@/styled-system/css'
 
-import { Inter } from 'next/font/google'
+import { Quicksand } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const quicksand = Quicksand({
+  subsets: ['latin'],
+  display: 'swap'
+})
 
 export const metadata: Metadata = {
   title: 'Tamanegi',
@@ -20,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body className={`${inter.className}, ${css({ background: 'darkorange' })}`}>{children}</body>
+      <body className={`${quicksand.className} ${css({ background: '#F3E5F5' })}`}>{children}</body>
     </html>
   )
 }
