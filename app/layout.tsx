@@ -5,6 +5,8 @@ import { css } from '@/styled-system/css'
 
 import { Quicksand } from 'next/font/google'
 
+import Script from 'next/script'
+
 const quicksand = Quicksand({
   subsets: ['latin'],
   display: 'swap'
@@ -23,7 +25,10 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body className={`${quicksand.className} ${css({ background: '#F3E5F5' })}`}>{children}</body>
+      <body className={`${quicksand.className} ${css({ background: '#F3E5F5' })}`}>
+        {children}
+        <Script src='/index.js' strategy='beforeInteractive' />
+      </body>
     </html>
   )
 }

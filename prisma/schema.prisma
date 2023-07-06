@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("POSTGRES_PRISMA_URL")
+  directUrl         = env("POSTGRES_URL_NON_POOLING")
+  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model PushSubscription {
+  endpoint  String @id
+  keyP256dh String
+  keyAuth   String
+
+  subscriptions Subscription[]
+
+  createdAt DateTime  @default(now())
+  deletedAt DateTime?
+}
+
+model Subscription {
+  id       String @id @default(uuid())
+  basketId String
+
+  PushSubscription         PushSubscription @relation(fields: [pushSubscriptionEndpoint], references: [endpoint])
+  pushSubscriptionEndpoint String
+
+  createdAt DateTime  @default(now())
+  deletedAt DateTime?
+}

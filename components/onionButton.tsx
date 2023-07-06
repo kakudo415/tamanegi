@@ -10,8 +10,9 @@ function Screw() {
 }
 
 function onionClick() {
-  // TODO: Push Notification
-  console.log('ONION CLICKED!')
+  fetch('./messages', {
+    method: 'POST',
+  })
 }
 
 export default function OnionButton() {

@@ -8,7 +8,7 @@ export default function Home() {
     <div className={vstack({ gap: '32px' })}>
       <Header />
       <main className={container()}>
-        <OnionButton></OnionButton>
+        <OnionButton />
       </main>
     </div>
   )
